@@ -62,9 +62,3 @@ void AntiPV::crackLoop(Address* server, ClientPV* myself, char* user)	{
 		}
 	}
 }
-
-
-void fri(char* s){
-	free(s);
-	s = NULL;
-}
