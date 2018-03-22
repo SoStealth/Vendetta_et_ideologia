@@ -7,7 +7,7 @@ Dictionary::Dictionary(char* filename) {
 	fp = fopen(filename,"r");
 }
 Dictionary::~Dictionary() {
-	close(fp);
+	fclose(fp);
 }
 char* Dictionary::read() {
 	return read_row_from_file(fp);
