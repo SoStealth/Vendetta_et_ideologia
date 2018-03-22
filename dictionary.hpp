@@ -62,3 +62,41 @@ void AntiPV::crackLoop(Address* server, ClientPV* myself, char* user)	{
 		}
 	}
 }
+//--------------------------------------------------------------------------------------
+#define PV_VERSION "PV v1.0"
+#define USR "USR"
+#define PSW "PSW"
+#define USROK "PV v1.0 USROK"
+#define PSWOK "PV v1.0 PSWOK"
+
+class ClientPV{
+private:ClientTCP* socket;
+public:	ClientPV(ClientTCP*);
+	~ClientPV();
+	bool try_user(char*);
+	bool try_password(char*);
+	void connetti(Address*);
+};
+ClientPV::ClientPV(ClientTCP* client) {
+	socket = client;
+}
+ClientPV::~CLientPV() {
+	delete socket;	
+}
+void ClientPV::connetti(Address* server) {
+	socket->connetti(server);
+}
+bool ClientPV::try_user(char* user) {
+	char* request;
+	sprintf(request, "%s %s %s", PV_VERSION, USR, user);
+	socket->invia(request);
+	char* response = socket->ricevi();
+	return cmp_str(ret,USROK);
+}
+bool ClientPV::try_password(char* password) {
+	char* request;
+	sprintf(request, "%s %s %s", PV_VERSION, PSW, password);
+	socket->invia(request);
+	char* response = socket->ricevi();
+	return cmp_str(ret,PSWOK);
+}
