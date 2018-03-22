@@ -1,6 +1,6 @@
 class AntiPV{
 private:Dictionary* userids;
-		Dictionary* passwds;
+	Dictionary* passwds;
 public:	AntiPV(char*,char*);
 		~AntiPV();
 		void crack(Address*);
@@ -13,3 +13,16 @@ AntiPV::~AntiPV() {
 	delete userids;
 	delete passwds;
 }
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
